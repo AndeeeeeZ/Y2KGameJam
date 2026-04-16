@@ -41,7 +41,7 @@ public class PlayerInputHandler : MonoBehaviour
     }
     private void OnLeft(InputAction.CallbackContext context)
     {
-        if (player.CurrentRole == PlayerRole.ATTACKER)
+        if (player.currentRole == PlayerRole.ATTACKER)
             combat.RequestAttack(Direction.LEFT);
         else
             defense.RequestBlock(Direction.LEFT, true);
@@ -49,17 +49,17 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void OnLeftRelease(InputAction.CallbackContext context)
     {
-        if (player.CurrentRole == PlayerRole.DEFENDER)
+        if (player.currentRole == PlayerRole.DEFENDER)
             defense.RequestBlock(Direction.LEFT, false);
     }
 
     private void OnRight(InputAction.CallbackContext context)
     {
-        if (player.CurrentRole == PlayerRole.ATTACKER)
+        if (player.currentRole == PlayerRole.ATTACKER)
         {
             combat.RequestAttack(Direction.RIGHT);
         }
-        else if (player.CurrentRole == PlayerRole.DEFENDER)
+        else if (player.currentRole == PlayerRole.DEFENDER)
         {
             defense.RequestBlock(Direction.RIGHT, true);
         }
@@ -67,7 +67,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void OnRightRelease(InputAction.CallbackContext context)
     {
-        if (player.CurrentRole == PlayerRole.DEFENDER)
+        if (player.currentRole == PlayerRole.DEFENDER)
         {
             defense.RequestBlock(Direction.RIGHT, false);
         }
@@ -75,7 +75,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void OnMiddle(InputAction.CallbackContext context)
     {
-        if (player.CurrentRole == PlayerRole.ATTACKER)
+        if (player.currentRole == PlayerRole.ATTACKER)
         {
             combat.RequestFake();
         }

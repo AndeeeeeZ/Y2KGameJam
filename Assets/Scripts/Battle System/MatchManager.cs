@@ -10,6 +10,7 @@ public class MatchManager : MonoBehaviour
     private Player currAttacker, currDefender; 
 
     private float currentTime; 
+    private bool isRunning; 
 
     private void Update()
     {
@@ -17,6 +18,26 @@ public class MatchManager : MonoBehaviour
     }
 
     private void UpdateTimer()
+    {
+        if (!isRunning) return; 
+
+        currentTime -= Time.deltaTime;
+
+        if (currentTime <= 0f)
+        {
+            currentTime = 0f; 
+            isRunning = false; 
+        } 
+
+
+    }
+
+    public void OnTurnEnds()
+    {
+        SwapPlayerRoles(); 
+    }
+
+    private void SwapPlayerRoles()
     {
         
     }
