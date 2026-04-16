@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerDefense : MonoBehaviour
 {
     [SerializeField] private bool DEBUG = false;
+    [SerializeField] private GameObject DEBUG_Left, DEBUG_Right; 
     private PlayerEnergy energy;
 
     public bool isHoldLeft { get; private set; }
@@ -27,14 +28,22 @@ public class PlayerDefense : MonoBehaviour
             return;
         }
 
-        // TODO: call energy's StartDefending() or smt like that when start defending
-
         if (direction == Direction.LEFT)
         {
+            DEBUG_Left?.SetActive(value); 
+
+            // If not defending before
+            if (value && !isHoldLeft) 
+                energy.StartDefending(); 
             isHoldLeft = value;
         }
         else if (direction == Direction.RIGHT)
         {
+            DEBUG_Right?.SetActive(value); 
+
+            // If not defending before
+            if (value && !isHoldRight) 
+                energy.StartDefending(); 
             isHoldRight = value;
         }
     }
