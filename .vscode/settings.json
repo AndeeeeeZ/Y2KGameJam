@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Y2K-Game-Jam.slnx"
+    "dotnet.defaultSolution": "Y2K_Real.slnx"
 }

@@ -1,0 +1,31 @@
+This is a two players game where they compete against each other
+It's about attacking/slapping and defending
+
+each player has three lives
+attacker/defender role switch every 10 seconds
+
+The attacker:
+    - aims to hit the defender
+    - has a time limit within where they need to attack/else loose the chance
+    - three keys
+        - left: attack left
+        - right: attack right
+        - middle: trick/fake attack/move a bit without attacking
+
+The defender:
+    - aims to not get hit and block the attack
+    - can hold up hands to block damage
+        - hold up hand will cost some energy per second
+        - hold up two hands will cost double the amount
+        - energy will resume over time when not defending
+    - would not be able to defend without energy
+
+
+- Two players with basic movement or idle stance
+- MatchManager role switching every 10 seconds
+- Attacker input: left / right / fake
+- Defender input: block left / right
+- Energy drain and regen
+- Hit detection
+- Lives and win/lose state
+- Animations and UI
