@@ -30,3 +30,15 @@ TODO:
 - Hit detection
 - Lives and win/lose state
 - Animations and UI
+
+-------------------------------------------------------------------
+Character customization: 
+- front hair
+- back hair
+- hair color
+- skin color
+- clothes
+
+- Random
+
+- color will be buttons
