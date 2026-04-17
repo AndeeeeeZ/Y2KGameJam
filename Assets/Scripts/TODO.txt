@@ -20,17 +20,6 @@ The defender:
         - energy will resume over time when not defending
     - would not be able to defend without energy
 
-------------------------------------------------------------------
-TODO: 
-- Two players with basic movement or idle stance
-- MatchManager role switching every 10 seconds
-- Attacker input: left / right / fake
-- Defender input: block left / right
-- Energy drain and regen
-- Hit detection
-- Lives and win/lose state
-- Animations and UI
-
 -------------------------------------------------------------------
 Character customization: 
 - front hair
@@ -42,3 +31,9 @@ Character customization:
 - Random
 
 - color will be buttons
+
+
+TODO: 
+- item data base
+- item loader
+- hook up selection ui to switch stuff on model
