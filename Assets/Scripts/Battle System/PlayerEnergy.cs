@@ -1,5 +1,5 @@
 using TMPro;
-using UnityEngine; 
+using UnityEngine;
 
 public class PlayerEnergy : MonoBehaviour
 {
@@ -7,23 +7,21 @@ public class PlayerEnergy : MonoBehaviour
     // Cool down after both hands are down to start energy regen
     [SerializeField] private float regenCoolDown;
     [SerializeField] private TextMeshProUGUI energyUI;
-    private PlayerDefense defense; 
+    private PlayerDefense defense;
     private float currEnergy;
     private bool isRegeneratingEnergy;
     private float regenTimer;
 
     private void Awake()
     {
-        defense = GetComponent<PlayerDefense>(); 
-
-        currEnergy = maxEnergy;
+        defense = GetComponent<PlayerDefense>();
 
         Reset();
     }
 
     private void Start()
     {
-        UpdateEnergyUI(); 
+        UpdateEnergyUI();
     }
 
     public bool CanBlock()
@@ -47,7 +45,7 @@ public class PlayerEnergy : MonoBehaviour
         if (count > 0)
         {
             currEnergy -= count * costPerSecPerHand * Time.deltaTime;
-            
+
             if (currEnergy <= 0f)
                 defense.OnNoMoreEnergy();
 
@@ -67,16 +65,17 @@ public class PlayerEnergy : MonoBehaviour
             }
         }
 
-        UpdateEnergyUI(); 
+        UpdateEnergyUI();
     }
 
     private void UpdateEnergyUI()
     {
-        energyUI.text = Mathf.FloorToInt(currEnergy).ToString(); 
+        energyUI.text = Mathf.FloorToInt(currEnergy).ToString();
     }
 
     public void StartDefending()
     {
+        currEnergy = maxEnergy;
         ResetRegenTimer();
     }
 
@@ -88,6 +87,7 @@ public class PlayerEnergy : MonoBehaviour
     public void Reset()
     {
         ResetRegenTimer();
+        UpdateEnergyUI(); 
     }
 
     private void ResetRegenTimer()

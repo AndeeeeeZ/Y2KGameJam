@@ -23,7 +23,6 @@ The defender:
 ------------------------------------------------------------------
 TODO: 
 - Two players with basic movement or idle stance
-
 - MatchManager role switching every 10 seconds
 - Attacker input: left / right / fake
 - Defender input: block left / right

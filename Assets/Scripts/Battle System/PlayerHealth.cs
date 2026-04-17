@@ -1,13 +1,16 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI healthUI; 
     [SerializeField] private int maxHealth; 
     private int currHealth;
 
     private void Awake()
     {
         currHealth = maxHealth; 
+        UpdateHealthUI();
     }
 
     public void TakeHit()
@@ -17,10 +20,16 @@ public class PlayerHealth : MonoBehaviour
         {
             Die(); 
         }
+        UpdateHealthUI();
+    }
+
+    private void UpdateHealthUI()
+    {
+        healthUI.text = currHealth.ToString(); 
     }
 
     private void Die()
     {
-        // TODO: End round
+        Debug.Log("PLAYER DIED, GAME ENDS"); 
     }
 }

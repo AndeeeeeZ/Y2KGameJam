@@ -31,7 +31,7 @@ public class PlayerDefense : MonoBehaviour
         if (direction == Direction.LEFT)
         {
             // If input is different from current state
-            if (value && !isHoldLeft)
+            if (value != isHoldLeft)
             {
                 energy.StartDefending();
                 if (value)
@@ -45,7 +45,7 @@ public class PlayerDefense : MonoBehaviour
         else if (direction == Direction.RIGHT)
         {
             // If input is different from current state
-            if (value && !isHoldRight)
+            if (value != isHoldRight)
             {
                 energy.StartDefending();
                 if (value)
@@ -64,8 +64,8 @@ public class PlayerDefense : MonoBehaviour
 
     public void Reset()
     {
-        isHoldLeft = false;
-        isHoldRight = false;
+        PutDownHand(Direction.LEFT);
+        PutDownHand(Direction.RIGHT);
         energy.Reset();
     }
 

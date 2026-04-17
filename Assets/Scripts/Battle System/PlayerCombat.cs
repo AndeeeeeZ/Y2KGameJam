@@ -36,7 +36,7 @@ public class PlayerCombat : MonoBehaviour
 
             if (attacking)
             {
-                // TODO: tell match manager to attack
+                matchManager.ResolveAttack(player, attackDirection); 
             }
             attacking = false;
             attackDirection = Direction.NONE; 
