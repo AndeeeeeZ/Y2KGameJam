@@ -1,11 +1,9 @@
-// CustomizationSlotUI.cs
 using TMPro;
 using UnityEngine;
 
 public class CustomizationSlotUI : MonoBehaviour
 {
     [SerializeField] private CustomizationSlot slot;
-    [SerializeField] private PartType partType;
     [SerializeField] private TMP_Text indexText;
 
     private BodyPartsLoader currentLoader;
@@ -24,7 +22,7 @@ public class CustomizationSlotUI : MonoBehaviour
             return;
         }
 
-        currentLoader.ChangeSelection(slot, partType, -1);
+        currentLoader.ChangeSelection(slot, -1);
         Refresh();
     }
 
@@ -36,7 +34,7 @@ public class CustomizationSlotUI : MonoBehaviour
             return;
         }
 
-        currentLoader.ChangeSelection(slot, partType, 1);
+        currentLoader.ChangeSelection(slot, 1);
         Refresh();
     }
 
@@ -55,6 +53,6 @@ public class CustomizationSlotUI : MonoBehaviour
             return;
         }
 
-        indexText.text = currentLoader.GetIndex(slot, partType).ToString();
+        indexText.text = currentLoader.FindItemIndexInBodyPart(slot).ToString();
     }
 }

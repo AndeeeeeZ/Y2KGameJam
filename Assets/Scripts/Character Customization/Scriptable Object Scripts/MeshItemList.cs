@@ -5,7 +5,6 @@ public class MeshItemList : ScriptableObject
 {
     public CustomizationSlot slot;
     public Mesh[] items;
-    public PartType partType = PartType.MESH;
 
     public int Count => items == null ? 0 : items.Length;
 

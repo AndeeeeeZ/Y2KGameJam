@@ -1,21 +1,14 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BodyPartsLoader : MonoBehaviour
 {
     [SerializeField] private PartsDatabase database;
-    [SerializeField] private BodyPart[] parts;
-
-    private readonly Dictionary<CustomizationSlot, BodyPart> partLookup = new();
-
-    [SerializeField] private int[] meshIndices;
-    [SerializeField] private int[] materialIndices;
+    [SerializeField] private BodyPart[] bodyParts;
+    private int[] meshIndices;
 
     private void Awake()
     {
-        CacheParts();
-        EnsureStateArrays();
+        meshIndices = new int[bodyParts.Length];
     }
 
     private void Start()
@@ -23,160 +16,86 @@ public class BodyPartsLoader : MonoBehaviour
         LoadEntireBody();
     }
 
-    private void CacheParts()
-    {
-        partLookup.Clear();
-
-        if (parts == null || parts.Length == 0)
-        {
-            parts = GetComponentsInChildren<BodyPart>(true);
-        }
-
-        if (parts == null)
-        {
-            Debug.LogWarning("No parts exist");
-            return;
-        }
-
-        for (int i = 0; i < parts.Length; i++)
-        {
-            BodyPart part = parts[i];
-            if (part == null)
-            {
-                Debug.LogWarning("No parts exist");
-                continue;
-            }
-
-            partLookup[part.slot] = part;
-        }
-    }
-
-    private void EnsureStateArrays()
-    {
-        int slotCount = Enum.GetValues(typeof(CustomizationSlot)).Length;
-
-        if (meshIndices == null || meshIndices.Length != slotCount)
-        {
-            Array.Resize(ref meshIndices, slotCount);
-        }
-
-        if (materialIndices == null || materialIndices.Length != slotCount)
-        {
-            Array.Resize(ref materialIndices, slotCount);
-        }
-    }
-
     public void LoadEntireBody()
     {
-        for (int i = 0; i < Enum.GetValues(typeof(CustomizationSlot)).Length; i++)
-        {
-            LoadSlot((CustomizationSlot)i);
-        }
+        for (int i = 0; i < bodyParts.Length; i++)
+            ApplyMesh(database.GetItemList(bodyParts[i].slot), i);
     }
 
-    public void ChangeSelection(CustomizationSlot slot, PartType partType, int deltaIndex)
+    public void ChangeSelection(CustomizationSlot slot, int deltaIndex)
     {
-        if (database == null)
+        int bodyPartIndex = FindBodyPartIndex(slot);
+        if (bodyPartIndex == -1) return;
+
+        MeshItemList list = database.GetItemList(slot);
+        if (list == null || list.Count == 0)
         {
-            Debug.LogWarning("Missing database");
+            Debug.LogWarning("Empty list");
             return;
         }
 
-        if (partType == PartType.MESH)
-        {
-            MeshItemList list = database.GetMeshList(slot);
-            if (list == null || list.Count == 0)
-            {
-                Debug.LogWarning("Empty list");
-                return;
-            }
+        int currentItemIndex = meshIndices[bodyPartIndex];
+        int nextItemIndex = WrapIndex(currentItemIndex + deltaIndex, list.Count);
 
-            int current = meshIndices[(int)slot];
-            int next = WrapIndex(current + deltaIndex, list.Count);
-            meshIndices[(int)slot] = next;
-            ApplyMesh(slot, list.GetByIndex(next));
-        }
-        else
-        {
-            MaterialItemList list = database.GetMaterialList(slot);
-            if (list == null || list.Count == 0)
-            {
-                Debug.LogWarning("Empty list");
-                return;
-            }
+        meshIndices[bodyPartIndex] = nextItemIndex;
 
-            int current = materialIndices[(int)slot];
-            int next = WrapIndex(current + deltaIndex, list.Count);
-            materialIndices[(int)slot] = next;
-            ApplyMaterial(slot, list.GetByIndex(next));
-        }
+        ApplyMesh(list, bodyPartIndex);
     }
 
-    public int GetIndex(CustomizationSlot slot, PartType partType)
+    public void LoadSlot(CustomizationSlot slot)
     {
-        return partType == PartType.MESH
-            ? meshIndices[(int)slot]
-            : materialIndices[(int)slot];
+        MeshItemList list = database.GetItemList(slot);
+        int bodyPartIndex = FindBodyPartIndex(slot);
+        ApplyMesh(list, bodyPartIndex);
     }
 
-    private void LoadSlot(CustomizationSlot slot)
+    private void ApplyMesh(MeshItemList list, int bodyPartIndex)
     {
-        if (!partLookup.TryGetValue(slot, out BodyPart bodyPart) || bodyPart == null)
-        {
-            Debug.LogWarning("Unable to find bodyPart"); 
-            return;
-        }
+        Mesh target = list.GetByIndex(meshIndices[bodyPartIndex]);
+        bodyParts[bodyPartIndex].SetMesh(target);
+    }
 
-        if (bodyPart.partType == PartType.MESH)
+    public BodyPart FindBodyPart(CustomizationSlot slot)
+    {
+        if (bodyParts.Length == 0)
         {
-            MeshItemList list = database != null ? database.GetMeshList(slot) : null;
-            if (list != null && list.Count > 0)
+            Debug.LogWarning("Body parts list is empty");
+            return null;
+        }
+        for (int i = 0; i < bodyParts.Length; i++)
+        {
+            if (bodyParts[i].slot == slot)
             {
-                int index = WrapIndex(meshIndices[(int)slot], list.Count);
-                meshIndices[(int)slot] = index;
-                bodyPart.SetMesh(list.GetByIndex(index));
+                return bodyParts[i];
             }
         }
-        else
+        Debug.LogWarning($"Unable to find body part with slot {slot}");
+        return null;
+    }
+
+    // Find the index in bodyParts
+    public int FindBodyPartIndex(CustomizationSlot slot)
+    {
+        if (bodyParts.Length == 0)
         {
-            MaterialItemList list = database != null ? database.GetMaterialList(slot) : null;
-            if (list != null && list.Count > 0)
+            Debug.LogWarning("Body parts list is empty");
+            return -1;
+        }
+        for (int i = 0; i < bodyParts.Length; i++)
+        {
+            if (bodyParts[i].slot == slot)
             {
-                int index = WrapIndex(materialIndices[(int)slot], list.Count);
-                materialIndices[(int)slot] = index;
-                bodyPart.SetMaterial(list.GetByIndex(index));
+                return i;
             }
         }
+        Debug.LogWarning($"Unable to find body part with slot {slot}");
+        return -1;
     }
 
-    private void ApplyMesh(CustomizationSlot slot, Mesh mesh)
+    // Find the index of the item within each body part
+    public int FindItemIndexInBodyPart(CustomizationSlot slot)
     {
-        if (mesh == null)
-        {
-            return;
-        }
-
-        if (!partLookup.TryGetValue(slot, out BodyPart bodyPart) || bodyPart == null)
-        {
-            return;
-        }
-
-        bodyPart.SetMesh(mesh);
-    }
-
-    private void ApplyMaterial(CustomizationSlot slot, Material material)
-    {
-        if (material == null)
-        {
-            return;
-        }
-
-        if (!partLookup.TryGetValue(slot, out BodyPart bodyPart) || bodyPart == null)
-        {
-            return;
-        }
-
-        bodyPart.SetMaterial(material);
+        return meshIndices[FindBodyPartIndex(slot)]; 
     }
 
     private static int WrapIndex(int index, int count)
@@ -185,7 +104,6 @@ public class BodyPartsLoader : MonoBehaviour
         {
             return 0;
         }
-
         return ((index % count) + count) % count;
     }
 }
