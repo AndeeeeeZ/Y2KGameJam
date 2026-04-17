@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerDefense : MonoBehaviour
 {
     [SerializeField] private bool DEBUG = false;
-    [SerializeField] private GameObject DEBUG_Left, DEBUG_Right; 
+    [SerializeField] private GameObject DEBUG_Left, DEBUG_Right;
     private PlayerEnergy energy;
 
     public bool isHoldLeft { get; private set; }
@@ -30,20 +30,29 @@ public class PlayerDefense : MonoBehaviour
 
         if (direction == Direction.LEFT)
         {
-            DEBUG_Left?.SetActive(value); 
+            // If input is different from current state
+            if (value && !isHoldLeft)
+            {
+                energy.StartDefending();
+                if (value)
+                    PutUpHand(Direction.LEFT);
+                else
+                    PutDownHand(Direction.LEFT);
+            }
 
-            // If not defending before
-            if (value && !isHoldLeft) 
-                energy.StartDefending(); 
             isHoldLeft = value;
         }
         else if (direction == Direction.RIGHT)
         {
-            DEBUG_Right?.SetActive(value); 
-
-            // If not defending before
-            if (value && !isHoldRight) 
-                energy.StartDefending(); 
+            // If input is different from current state
+            if (value && !isHoldRight)
+            {
+                energy.StartDefending();
+                if (value)
+                    PutUpHand(Direction.RIGHT);
+                else
+                    PutDownHand(Direction.RIGHT);
+            }
             isHoldRight = value;
         }
     }
@@ -58,5 +67,43 @@ public class PlayerDefense : MonoBehaviour
         isHoldLeft = false;
         isHoldRight = false;
         energy.Reset();
+    }
+
+    public void OnNoMoreEnergy()
+    {
+        PutDownHand(Direction.LEFT);
+        PutDownHand(Direction.RIGHT);
+    }
+
+    private void PutDownHand(Direction direction)
+    {
+        if (direction == Direction.LEFT)
+        {
+            if (!isHoldLeft) return;
+            isHoldLeft = false;
+            DEBUG_Left?.SetActive(false);
+        }
+        else if (direction == Direction.RIGHT)
+        {
+            if (!isHoldRight) return;
+            isHoldRight = false;
+            DEBUG_Right?.SetActive(false);
+        }
+    }
+
+    private void PutUpHand(Direction direction)
+    {
+        if (direction == Direction.LEFT)
+        {
+            if (isHoldLeft) return;
+            isHoldLeft = true;
+            DEBUG_Left?.SetActive(true);
+        }
+        else if (direction == Direction.RIGHT)
+        {
+            if (isHoldRight) return;
+            isHoldRight = true;
+            DEBUG_Right?.SetActive(true);
+        }
     }
 }
