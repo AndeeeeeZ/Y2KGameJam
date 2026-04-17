@@ -4,38 +4,35 @@ public class BodyPart : MonoBehaviour
 {
     public PartType partType;
     public CustomizationSlot slot;
+
     private MeshFilter meshFilter;
     private MeshRenderer meshRenderer;
 
     private void Awake()
     {
-        if (partType == PartType.MESH)
-        {
-            meshFilter = GetComponent<MeshFilter>();
-        }
-        else if (partType == PartType.MATERIAL)
-        {
-            meshRenderer = GetComponent<MeshRenderer>();
-        }
+        meshFilter = GetComponent<MeshFilter>();
+        meshRenderer = GetComponent<MeshRenderer>();
     }
 
     public void SetMesh(Mesh target)
     {
-        if (partType != PartType.MESH)
+        if (partType != PartType.MESH || meshFilter == null)
         {
-            Debug.LogWarning("This body part only takes mesh");
+            Debug.LogWarning("Wrong type or meshFilter missing"); 
             return;
         }
-        meshFilter.mesh = target;
+
+        meshFilter.sharedMesh = target;
     }
 
     public void SetMaterial(Material target)
     {
-        if (partType != PartType.MATERIAL)
+        if (partType != PartType.MATERIAL || meshRenderer == null)
         {
-            Debug.LogWarning("This body part only takes material");
+            Debug.LogWarning("Wrong type or meshRenderer missing"); 
             return;
         }
-        meshRenderer.material = target; 
+
+        meshRenderer.sharedMaterial = target;
     }
 }

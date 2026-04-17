@@ -4,15 +4,11 @@ using UnityEngine;
 public class PartsDatabase : ScriptableObject
 {
     public MeshItemList[] meshItemLists;
-
-    public int MeshListCount => meshItemLists == null ? 0 : meshItemLists.Length;
+    public MaterialItemList[] materialItemLists;
 
     public MeshItemList GetMeshList(CustomizationSlot slot)
     {
-        if (meshItemLists == null)
-        {
-            return null;
-        }
+        if (meshItemLists == null) return null;
 
         for (int i = 0; i < meshItemLists.Length; i++)
         {
@@ -25,25 +21,18 @@ public class PartsDatabase : ScriptableObject
         return null;
     }
 
-    public Mesh GetMesh(CustomizationSlot slot, int itemIndex)
+    public MaterialItemList GetMaterialList(CustomizationSlot slot)
     {
-        MeshItemList list = GetMeshList(slot);
-        if (list == null)
+        if (materialItemLists == null) return null;
+
+        for (int i = 0; i < materialItemLists.Length; i++)
         {
-            return null;
+            if (materialItemLists[i] != null && materialItemLists[i].slot == slot)
+            {
+                return materialItemLists[i];
+            }
         }
 
-        return list.GetByIndex(itemIndex);
-    }
-
-    public Mesh GetCurrMesh(CustomizationSlot slot)
-    {
-        MeshItemList list = GetMeshList(slot);
-        if (list == null)
-        {
-            return null;
-        }
-
-        return list.GetCurrent();
+        return null;
     }
 }

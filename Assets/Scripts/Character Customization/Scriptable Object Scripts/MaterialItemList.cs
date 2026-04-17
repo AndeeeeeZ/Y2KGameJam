@@ -5,32 +5,19 @@ public class MaterialItemList : ScriptableObject
 {
     public CustomizationSlot slot;
     public Material[] items;
-    public int index;
-    public PartType partType = PartType.MATERIAL; 
-    public Material GetByChangeInIndex(int deltaIndex)
-    {
-        index += deltaIndex;
-        index %= items.Length;
-        return items[index];
-    }
+    public PartType partType = PartType.MATERIAL;
+
+    public int Count => items == null ? 0 : items.Length;
 
     public Material GetByIndex(int i)
     {
-        if (i >= items.Length)
-        {
-            Debug.LogWarning("Item index out of range"); 
-            i %= items.Length; 
-        }
-        return items[i]; 
+        if (Count == 0) return null;
+        return items[WrapIndex(i)];
     }
 
-    public Material GetCurrent()
+    public int WrapIndex(int i)
     {
-        return items[index]; 
-    }
-
-    public void Reset()
-    {
-        index = 0;
+        if (Count == 0) return 0;
+        return ((i % Count) + Count) % Count;
     }
 }

@@ -1,10 +1,11 @@
+// CustomizationSlotUI.cs
 using TMPro;
 using UnityEngine;
 
-public class MeshCustomizationSlotUI : MonoBehaviour
+public class CustomizationSlotUI : MonoBehaviour
 {
     [SerializeField] private CustomizationSlot slot;
-    [SerializeField] private PartsDatabase database;
+    [SerializeField] private PartType partType;
     [SerializeField] private TMP_Text indexText;
 
     private BodyPartsLoader currentLoader;
@@ -17,32 +18,43 @@ public class MeshCustomizationSlotUI : MonoBehaviour
 
     public void StepLeft()
     {
-        if (currentLoader == null) return;
+        if (currentLoader == null)
+        {
+            Debug.LogWarning("Missing loader"); 
+            return;
+        }
 
-        currentLoader.ChangeMesh(slot, -1);
+        currentLoader.ChangeSelection(slot, partType, -1);
+        Refresh();
     }
 
     public void StepRight()
     {
-        if (currentLoader == null) return;
+        if (currentLoader == null)
+        {
+            Debug.LogWarning("Missing loader"); 
+            return;
+        }
 
-        currentLoader.ChangeMesh(slot, 1);
+        currentLoader.ChangeSelection(slot, partType, 1);
+        Refresh();
     }
 
     public void Refresh()
     {
-        if (database == null || indexText == null)
+        if (indexText == null)
         {
+            Debug.LogWarning("Missing index text"); 
             return;
         }
 
-        var list = database.GetMeshList(slot);
-        if (list == null || list.Count == 0)
+        if (currentLoader == null)
         {
+            Debug.LogWarning("Missing loader"); 
             indexText.text = "-";
             return;
         }
 
-        indexText.text = list.index.ToString();
+        indexText.text = currentLoader.GetIndex(slot, partType).ToString();
     }
 }
