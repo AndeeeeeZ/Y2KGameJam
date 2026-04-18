@@ -71,7 +71,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _EyeColor: {r: 0.7283019, g: 0.7283019, b: 0.7283019, a: 0}
+    - _EyeColor: {r: 0.33615208, g: 0, b: 1, a: 0}
     - _Eye_Color: {r: 1, g: 0.52602994, b: 0, a: 0}
     - _SkinColor: {r: 0.96862745, g: 0.7466353, b: 0.654902, a: 0}
     - _Skin_Color: {r: 1, g: 0.9009003, b: 0.63836473, a: 1}
