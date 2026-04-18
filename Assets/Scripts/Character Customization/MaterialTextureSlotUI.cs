@@ -56,4 +56,10 @@ public class MaterialTextureSlotUI : MonoBehaviour
         }
         index = ((index % count) + count) % count;
     }
+
+    public void GetRandom()
+    {
+        index = Random.Range(0, textures.Length);
+        Refresh();
+    }
 }

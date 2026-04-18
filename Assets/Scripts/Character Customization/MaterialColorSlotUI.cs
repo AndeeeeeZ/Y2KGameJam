@@ -56,4 +56,10 @@ public class MaterialColorSlotUI : MonoBehaviour
         }
         index = ((index % count) + count) % count;
     }
+
+    public void GetRandom()
+    {
+        index = Random.Range(0, colors.Length); 
+        Refresh(); 
+    }
 }

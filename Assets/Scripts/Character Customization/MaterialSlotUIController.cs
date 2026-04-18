@@ -34,4 +34,20 @@ public class MaterialSlotUIController : MonoBehaviour
             textureSlots[i].SetTarget(target);
         }
     }
+
+    public void Randomize()
+    {
+        foreach (var c in colorSlots)
+            c.GetRandom();
+        foreach (var t in textureSlots)
+            t.GetRandom();
+    }
+
+    public void Reset()
+    {
+        foreach (var c in colorSlots)
+            c.Reset();
+        foreach (var t in textureSlots)
+            t.Reset();
+    }
 }

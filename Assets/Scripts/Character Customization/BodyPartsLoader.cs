@@ -1,11 +1,12 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BodyPartsLoader : MonoBehaviour
 {
     [SerializeField] private PartsDatabase database;
     [SerializeField] private BodyPart[] bodyParts;
-    [SerializeField] private CustomizatoinSave save; 
-    [SerializeField] private bool loadSavedOnStart = false; 
+    [SerializeField] private CustomizatoinSave save;
+    [SerializeField] private bool loadSavedOnStart = false;
     private int[] meshIndices;
 
     private void Awake()
@@ -16,7 +17,7 @@ public class BodyPartsLoader : MonoBehaviour
     private void Start()
     {
         if (loadSavedOnStart)
-            ReadData(); 
+            ReadData();
         LoadEntireBody();
     }
 
@@ -99,7 +100,7 @@ public class BodyPartsLoader : MonoBehaviour
     // Find the index of the item within each body part
     public int FindItemIndexInBodyPart(CustomizationSlot slot)
     {
-        return meshIndices[FindBodyPartIndex(slot)]; 
+        return meshIndices[FindBodyPartIndex(slot)];
     }
 
     private static int WrapIndex(int index, int count)
@@ -113,11 +114,39 @@ public class BodyPartsLoader : MonoBehaviour
 
     public void SaveData()
     {
-        save.indices = meshIndices; 
+        save.indices = meshIndices;
     }
 
     public void ReadData()
     {
-        meshIndices = save.indices; 
+        meshIndices = save.indices;
+    }
+
+    public void RandomizeAllParts()
+    {
+        for (int i = 0; i < bodyParts.Length; i++)
+        {
+            MeshItemList list = database.GetItemList(bodyParts[i].slot);
+
+            // Skip if no options available
+            if (list == null || list.Count == 0)
+                continue;
+            int randomIndex = Random.Range(0, list.Count);
+
+            meshIndices[i] = randomIndex;
+            ApplyMesh(list, i);
+        }
+    }
+
+    public void ResetAllParts()
+    {
+        for (int i = 0; i < bodyParts.Length; i++)
+        {
+            MeshItemList list = database.GetItemList(bodyParts[i].slot);
+            if (list == null || list.Count == 0)
+                continue;
+            meshIndices[i] = 0;
+            ApplyMesh(list, i);
+        }
     }
 }
