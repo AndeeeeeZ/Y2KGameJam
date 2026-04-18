@@ -5,20 +5,7 @@ public class CustomizationSlotUI : MonoBehaviour
 {
     [SerializeField] private CustomizationSlot slot;
     [SerializeField] private TMP_Text indexText;
-    [SerializeField] private AudioClip clip;
-    private AudioSource audioSource;
-
     private BodyPartsLoader currentLoader;
-
-    private void Awake()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
-
-    private void PlayAudio()
-    {
-        audioSource.PlayOneShot(clip);
-    }
 
     public void SetTarget(BodyPartsLoader loader)
     {
@@ -35,7 +22,6 @@ public class CustomizationSlotUI : MonoBehaviour
         }
 
         currentLoader.ChangeSelection(slot, -1);
-        PlayAudio();
         Refresh();
     }
 
@@ -48,7 +34,6 @@ public class CustomizationSlotUI : MonoBehaviour
         }
 
         currentLoader.ChangeSelection(slot, 1);
-        PlayAudio();
         Refresh();
     }
 

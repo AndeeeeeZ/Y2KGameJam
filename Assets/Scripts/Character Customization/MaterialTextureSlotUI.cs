@@ -16,15 +16,6 @@ public class MaterialTextureSlotUI : MonoBehaviour
     {
         Reset();
     }
-    private void Awake()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
-
-    private void PlayAudio()
-    {
-        audioSource.PlayOneShot(clip);
-    }
 
     public void Reset()
     {
@@ -42,7 +33,6 @@ public class MaterialTextureSlotUI : MonoBehaviour
     {
         index -= 1;
         WrapIndex();
-        PlayAudio(); 
         Refresh();
     }
 
@@ -50,7 +40,6 @@ public class MaterialTextureSlotUI : MonoBehaviour
     {
         index += 1;
         WrapIndex();
-        PlayAudio(); 
         Refresh();
     }
 

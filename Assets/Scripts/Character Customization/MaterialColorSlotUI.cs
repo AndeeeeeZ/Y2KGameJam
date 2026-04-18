@@ -7,21 +7,8 @@ public class MaterialColorSlotUI : MonoBehaviour
     [SerializeField] private TMP_Text indexText;
     [SerializeField] private Color[] colors;
     [SerializeField] private string targetPropertyName;
-    [SerializeField] private AudioClip clip;
-
-    private AudioSource audioSource;
     private Material currentMaterial;
     private int index;
-
-    private void Awake()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
-
-    private void PlayAudio()
-    {
-        audioSource.PlayOneShot(clip);
-    }
 
     private void Start()
     {
@@ -43,8 +30,7 @@ public class MaterialColorSlotUI : MonoBehaviour
     public void StepLeft()
     {
         index -= 1;
-        WrapIndex();
-        PlayAudio(); 
+        WrapIndex(); 
         Refresh();
     }
 
@@ -52,7 +38,6 @@ public class MaterialColorSlotUI : MonoBehaviour
     {
         index += 1;
         WrapIndex();
-        PlayAudio(); 
         Refresh();
     }
 

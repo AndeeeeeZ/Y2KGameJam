@@ -14,6 +14,10 @@ public class MenuController : MonoBehaviour
     [Header("Alpha Per Slot (size 7)")]
     [SerializeField] private float[] slotAlphas;
 
+    [Header("Sound Effects")]
+    [SerializeField] private AudioClip audioClip; 
+    [SerializeField] private AudioSource leftAudioSource, rightAudioSource; 
+
     private int index;
     private bool[] wasActive;
     private CanvasGroup[] canvasGroups;
@@ -155,6 +159,13 @@ public class MenuController : MonoBehaviour
         {
             UI3.StepLeft();
         }
+        else
+        {
+            // TODO: Play error sound?
+            return; 
+        }
+
+        leftAudioSource.PlayOneShot(audioClip); 
     }
 
     public void TriggerCurrentRight()
@@ -172,6 +183,11 @@ public class MenuController : MonoBehaviour
         {
             UI3.StepRight();
         }
+        else
+        {
+            // TODO: Play error sound? 
+        }
+        rightAudioSource.PlayOneShot(audioClip); 
     }
 
     private void WrapIndex()
