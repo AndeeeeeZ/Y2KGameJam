@@ -3,11 +3,11 @@ using UnityEngine;
 public class BodyPart : MonoBehaviour
 {
     public CustomizationSlot slot;
-    private MeshFilter meshFilter;
+    private SkinnedMeshRenderer meshFilter;
 
     private void Awake()
     {
-        meshFilter = GetComponent<MeshFilter>();
+        meshFilter = GetComponent<SkinnedMeshRenderer>();
     }
 
     public void SetMesh(Mesh target)

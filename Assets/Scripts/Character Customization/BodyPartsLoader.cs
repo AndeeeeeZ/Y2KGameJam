@@ -1,11 +1,10 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BodyPartsLoader : MonoBehaviour
 {
     [SerializeField] private PartsDatabase database;
     [SerializeField] private BodyPart[] bodyParts;
-    [SerializeField] private CustomizatoinSave save;
+    [SerializeField] private CustomizationSaves save;
     [SerializeField] private bool loadSavedOnStart = false;
     private int[] meshIndices;
 
@@ -149,4 +148,8 @@ public class BodyPartsLoader : MonoBehaviour
             ApplyMesh(list, i);
         }
     }
+}
+
+internal class CustomizationSave
+{
 }
