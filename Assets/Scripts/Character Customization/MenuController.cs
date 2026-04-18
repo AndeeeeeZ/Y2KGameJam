@@ -4,7 +4,7 @@ public class MenuController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject[] options;
-    [SerializeField] private Transform[] targetTransforms; 
+    [SerializeField] private Transform[] targetTransforms;
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 10f;
@@ -49,11 +49,11 @@ public class MenuController : MonoBehaviour
             // Disable buttons unless the current selection
             if (relativeIndex != 0)
             {
-                options[i].GetComponent<ButtonController>().SetButtonsActiveness(false); 
+                options[i].GetComponent<ButtonController>().SetButtonsActiveness(false);
             }
             else
             {
-                options[i].GetComponent<ButtonController>().SetButtonsActiveness(true); 
+                options[i].GetComponent<ButtonController>().SetButtonsActiveness(true);
             }
 
             // Wrap relative index
@@ -64,7 +64,7 @@ public class MenuController : MonoBehaviour
 
             if (shouldBeActive)
             {
-                int slotIndex = relativeIndex + 3; 
+                int slotIndex = relativeIndex + 3;
 
                 Transform obj = options[i].transform;
 
@@ -138,6 +138,40 @@ public class MenuController : MonoBehaviour
     {
         index++;
         WrapIndex();
+    }
+
+    public void TriggerCurrentLeft()
+    {
+        GameObject currentOption = options[index];
+        if (currentOption.TryGetComponent(out CustomizationSlotUI UI1))
+        {
+            UI1.StepLeft();
+        }
+        else if (currentOption.TryGetComponent(out MaterialTextureSlotUI UI2))
+        {
+            UI2.StepLeft();
+        }
+        else if (currentOption.TryGetComponent(out MaterialColorSlotUI UI3))
+        {
+            UI3.StepLeft();
+        }
+    }
+
+    public void TriggerCurrentRight()
+    {
+        GameObject currentOption = options[index];
+        if (currentOption.TryGetComponent(out CustomizationSlotUI UI1))
+        {
+            UI1.StepRight();
+        }
+        else if (currentOption.TryGetComponent(out MaterialTextureSlotUI UI2))
+        {
+            UI2.StepRight();
+        }
+        else if (currentOption.TryGetComponent(out MaterialColorSlotUI UI3))
+        {
+            UI3.StepRight();
+        }
     }
 
     private void WrapIndex()

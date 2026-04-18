@@ -139,7 +139,7 @@
             ]
         },
         {
-            "name": "UI",
+            "name": "Player1 UI",
             "id": "af1ee526-a6b7-45a6-a0ea-16e95b84a97d",
             "actions": [
                 {
@@ -202,30 +202,8 @@
                 },
                 {
                     "name": "",
-                    "id": "b3b26336-57ab-4dab-8c32-e7a142271afe",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Up",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "adf8fe1e-9ecd-4fb2-b083-5a155dfe0d18",
                     "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Down",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6fd90ea9-17af-4cbe-9236-68f69c364871",
-                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -246,17 +224,6 @@
                 },
                 {
                     "name": "",
-                    "id": "cef4540e-ab92-423a-9b31-efb08b786c88",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Left",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "dba9058a-0e2c-4084-80e5-d8bc63a7d868",
                     "path": "<Keyboard>/d",
                     "interactions": "",
@@ -268,7 +235,104 @@
                 },
                 {
                     "name": "",
-                    "id": "eed0672b-1deb-43d6-9ef6-984f680cbbf3",
+                    "id": "e9394288-9d92-450e-a50d-b71bb54d402b",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Randomize",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player2 UI",
+            "id": "c581d003-a74f-4d0e-a491-7be576701292",
+            "actions": [
+                {
+                    "name": "Up",
+                    "type": "Button",
+                    "id": "e970d3df-9c5a-4523-8ae6-f2a153aa1d5d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Down",
+                    "type": "Button",
+                    "id": "b3761367-87ed-4821-a0ce-a9c9ba7ff2ea",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Left",
+                    "type": "Button",
+                    "id": "a5e8c36e-433c-4e6c-88ba-4126501eeee9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right",
+                    "type": "Button",
+                    "id": "49eca272-a647-4db1-bf8f-7232e5240710",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Randomize",
+                    "type": "Button",
+                    "id": "5dadebbc-ff03-4456-addd-e51fe59d37e5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "65de21c2-c52d-4967-83c7-342aca871aa1",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e4538c1b-3dc5-41e2-bfae-4dd8dd49058e",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Down",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e5085d66-4a1a-4eac-8e10-4b3efb618e80",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "81172d98-f9b8-4a47-b6c7-cf3cfec6b753",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
@@ -279,8 +343,8 @@
                 },
                 {
                     "name": "",
-                    "id": "e9394288-9d92-450e-a50d-b71bb54d402b",
-                    "path": "<Keyboard>/r",
+                    "id": "b8b3087a-a665-4ab3-b4a5-edba29d8a945",
+                    "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
