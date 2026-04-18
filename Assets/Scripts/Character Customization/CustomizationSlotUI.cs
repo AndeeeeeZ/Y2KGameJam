@@ -1,12 +1,24 @@
 using TMPro;
-using UnityEngine; 
+using UnityEngine;
 
 public class CustomizationSlotUI : MonoBehaviour
 {
     [SerializeField] private CustomizationSlot slot;
     [SerializeField] private TMP_Text indexText;
+    [SerializeField] private AudioClip clip;
+    private AudioSource audioSource;
 
     private BodyPartsLoader currentLoader;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    private void PlayAudio()
+    {
+        audioSource.PlayOneShot(clip);
+    }
 
     public void SetTarget(BodyPartsLoader loader)
     {
@@ -18,11 +30,12 @@ public class CustomizationSlotUI : MonoBehaviour
     {
         if (currentLoader == null)
         {
-            Debug.LogWarning("Missing loader"); 
+            Debug.LogWarning("Missing loader");
             return;
         }
 
         currentLoader.ChangeSelection(slot, -1);
+        PlayAudio();
         Refresh();
     }
 
@@ -30,11 +43,12 @@ public class CustomizationSlotUI : MonoBehaviour
     {
         if (currentLoader == null)
         {
-            Debug.LogWarning("Missing loader"); 
+            Debug.LogWarning("Missing loader");
             return;
         }
 
         currentLoader.ChangeSelection(slot, 1);
+        PlayAudio();
         Refresh();
     }
 
@@ -42,13 +56,13 @@ public class CustomizationSlotUI : MonoBehaviour
     {
         if (indexText == null)
         {
-            Debug.LogWarning("Missing index text"); 
+            Debug.LogWarning("Missing index text");
             return;
         }
 
         if (currentLoader == null)
         {
-            Debug.LogWarning("Missing loader"); 
+            Debug.LogWarning("Missing loader");
             indexText.text = "-";
             return;
         }

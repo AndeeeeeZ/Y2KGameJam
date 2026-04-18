@@ -7,12 +7,23 @@ public class MaterialTextureSlotUI : MonoBehaviour
     [SerializeField] private TMP_Text indexText;
     [SerializeField] private Texture2D[] textures;
     [SerializeField] private string targetPropertyName;
+    [SerializeField] private AudioClip clip;
+    private AudioSource audioSource;
     private Material currentMaterial;
     private int index;
 
     private void Start()
     {
         Reset();
+    }
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    private void PlayAudio()
+    {
+        audioSource.PlayOneShot(clip);
     }
 
     public void Reset()
@@ -31,6 +42,7 @@ public class MaterialTextureSlotUI : MonoBehaviour
     {
         index -= 1;
         WrapIndex();
+        PlayAudio(); 
         Refresh();
     }
 
@@ -38,6 +50,7 @@ public class MaterialTextureSlotUI : MonoBehaviour
     {
         index += 1;
         WrapIndex();
+        PlayAudio(); 
         Refresh();
     }
 
