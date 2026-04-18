@@ -2009,7 +2009,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 737dafadbd6b7b349b1e30bcb9441bb2, type: 2}
+  - {fileID: 2100000, guid: 470bc9b1486fde949b313b664d59f637, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10480,7 +10480,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b4d18a9e20570bc4e89364dfebd0792d, type: 2}
+  - {fileID: 2100000, guid: 8835ef922f193d248a4bb17558fe962c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11538,7 +11538,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 737dafadbd6b7b349b1e30bcb9441bb2, type: 2}
+  - {fileID: 2100000, guid: 470bc9b1486fde949b313b664d59f637, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18681,7 +18681,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 737dafadbd6b7b349b1e30bcb9441bb2, type: 2}
+  - {fileID: 2100000, guid: 470bc9b1486fde949b313b664d59f637, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -23046,7 +23046,7 @@ PlayableDirector:
     value: {fileID: 27421901}
   - key: {fileID: -2686925551586082883, guid: 2c61d1ad607f6d148a13801a37008c69, type: 2}
     value: {fileID: 525940907}
-  - key: {fileID: 5816690743225738374, guid: 2c61d1ad607f6d148a13801a37008c69, type: 2}
+  - key: {fileID: 6101494162205452447, guid: 2c61d1ad607f6d148a13801a37008c69, type: 2}
     value: {fileID: 1033665047}
   m_ExposedReferences:
     m_References: []
@@ -25641,7 +25641,7 @@ PrefabInstance:
     - target: {fileID: -1526964690268444965, guid: 25ced9e348ca32d4c93cf428cc29c3fe, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b84f632b88bb00d49b98d6fe6e78475f, type: 2}
+      objectReference: {fileID: 2100000, guid: 5fc4d9f110e64c04786941fc64c8b6b5, type: 2}
     - target: {fileID: -1516658318741664829, guid: 25ced9e348ca32d4c93cf428cc29c3fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0.22425513
