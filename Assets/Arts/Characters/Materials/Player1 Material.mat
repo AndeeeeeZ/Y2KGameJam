@@ -46,7 +46,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EyeOutline:
-        m_Texture: {fileID: 2800000, guid: 868e1df9a5230c34ab5522034f5ca32b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0d27d1ddcd8166e428805abcb0ed5ebe, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FaceTexture:
@@ -71,9 +71,9 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _EyeColor: {r: 1, g: 1, b: 1, a: 0}
+    - _EyeColor: {r: 1, g: 0.6214054, b: 0, a: 0}
     - _Eye_Color: {r: 1, g: 0.52602994, b: 0, a: 0}
-    - _SkinColor: {r: 1, g: 1, b: 1, a: 0}
+    - _SkinColor: {r: 0.4528302, g: 0.34512448, b: 0.23211104, a: 0}
     - _Skin_Color: {r: 1, g: 0.9009003, b: 0.63836473, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

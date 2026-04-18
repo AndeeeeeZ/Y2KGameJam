@@ -1708,7 +1708,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 415866263}
         m_TargetAssemblyTypeName: ModelSpinner, Assembly-CSharp
         m_MethodName: set_enabled
         m_Mode: 0
@@ -11398,9 +11398,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 25ced9e348ca32d4c93cf428cc29c3fe, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 952195022}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 25ced9e348ca32d4c93cf428cc29c3fe, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 952195021}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 25ced9e348ca32d4c93cf428cc29c3fe, type: 3}
       insertIndex: -1
@@ -11563,22 +11560,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &952195022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 952195016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c0a92c79906cb4da0b9c3349d106d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  database: {fileID: 11400000, guid: d52a9dfb011d7b148a06c7cf9901bd5c, type: 2}
-  bodyParts: []
-  save: {fileID: 0}
-  loadSavedOnStart: 0
 --- !u!1 &961413000
 GameObject:
   m_ObjectHideFlags: 0
@@ -17938,7 +17919,7 @@ MonoBehaviour:
   - {fileID: 1822259508}
   - {fileID: 1822259510}
   - {fileID: 1822259511}
-  player1: {fileID: 952195022}
+  player1: {fileID: 952195020}
   player2: {fileID: 0}
 --- !u!114 &1822259508
 MonoBehaviour:
