@@ -4,6 +4,8 @@ public class BodyPartsLoader : MonoBehaviour
 {
     [SerializeField] private PartsDatabase database;
     [SerializeField] private BodyPart[] bodyParts;
+    [SerializeField] private CustomizatoinSave save; 
+    [SerializeField] private bool loadSavedOnStart = false; 
     private int[] meshIndices;
 
     private void Awake()
@@ -13,6 +15,8 @@ public class BodyPartsLoader : MonoBehaviour
 
     private void Start()
     {
+        if (loadSavedOnStart)
+            ReadData(); 
         LoadEntireBody();
     }
 
@@ -105,5 +109,15 @@ public class BodyPartsLoader : MonoBehaviour
             return 0;
         }
         return ((index % count) + count) % count;
+    }
+
+    public void SaveData()
+    {
+        save.indices = meshIndices; 
+    }
+
+    public void ReadData()
+    {
+        meshIndices = save.indices; 
     }
 }
