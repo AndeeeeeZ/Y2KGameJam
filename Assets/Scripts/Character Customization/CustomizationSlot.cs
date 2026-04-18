@@ -9,5 +9,6 @@ public enum CustomizationSlot
     SKIN_COLOR,
     EYE_COLOR,
     EYE_SHAPE,
-    ACCESSORIES
+    ACCESSORIES,
+    ACCESSORIES_COLOR
 }
