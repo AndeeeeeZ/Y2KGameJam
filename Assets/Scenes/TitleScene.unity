@@ -331,9 +331,9 @@ MonoBehaviour:
   starPrefab: {fileID: 299459721856952327, guid: a69a966ac58414a4e9b7fabec0689c19, type: 3}
   intervalPerSpawn: 1
   startAngle: 0
-  angleSpeed: 2
-  startColor: {r: 0.66666657, g: 0.13626827, b: 0.13626827, a: 1}
-  colorSpeed: 2
+  angleSpeed: 4
+  startColor: {r: 1, g: 0, b: 0, a: 0.1764706}
+  colorSpeed: 0.03
 --- !u!1 &695736089
 GameObject:
   m_ObjectHideFlags: 0
