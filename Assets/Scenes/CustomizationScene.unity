@@ -9616,6 +9616,93 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 592557869}
   m_CullTransparentMesh: 1
+--- !u!1 &593558626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 593558628}
+  - component: {fileID: 593558627}
+  m_Layer: 0
+  m_Name: SceneController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &593558627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593558626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3748265d9615bc240881c9ef220afed9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ToPlayer2:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1822259509}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: SwitchAllToPlayer2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1617611298}
+        m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1224335541}
+        m_TargetAssemblyTypeName: MenuInputHandler, Assembly-CSharp
+        m_MethodName: RebindToPlayer2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnSceneEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  currentPlayer: 0
+--- !u!4 &593558628
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593558626}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.665558, y: -10.691425, z: -0.51680696}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &594925555
 GameObject:
   m_ObjectHideFlags: 0
@@ -18613,9 +18700,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1617611298}
-        m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 593558627}
+        m_TargetAssemblyTypeName: CustomizationSceneController, Assembly-CSharp
+        m_MethodName: ToNext
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19482,7 +19569,7 @@ GameObject:
   - component: {fileID: 1224335539}
   - component: {fileID: 1224335541}
   m_Layer: 0
-  m_Name: InputHandler
+  m_Name: Input Handler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19545,6 +19632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4aa0bf9204b0e8409c1de5c95c69344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player2ActionMapName: Player2 UI
   onUp:
     m_PersistentCalls:
       m_Calls:
@@ -24030,13 +24118,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   options:
-  - {fileID: 2015659516}
-  - {fileID: 105143003}
-  - {fileID: 900009472}
   - {fileID: 875514583}
   - {fileID: 403987407}
   - {fileID: 367729259}
   - {fileID: 1712498166}
+  - {fileID: 2015659516}
+  - {fileID: 105143003}
+  - {fileID: 900009472}
   - {fileID: 315443388}
   - {fileID: 2047678317}
   - {fileID: 442941571}
@@ -24049,6 +24137,11 @@ MonoBehaviour:
   - {fileID: 1782635907}
   - {fileID: 862421125}
   - {fileID: 1637930089}
+  uiController: {fileID: 1822259507}
+  materialControllers:
+  - {fileID: 1822259511}
+  - {fileID: 1822259510}
+  - {fileID: 1822259508}
   moveSpeed: 10
   scaleSpeed: 10
   alphaSpeed: 10
@@ -26844,3 +26937,4 @@ SceneRoots:
   - {fileID: 1233764826}
   - {fileID: 2090985275}
   - {fileID: 1617611299}
+  - {fileID: 593558628}

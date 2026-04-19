@@ -11,7 +11,7 @@ public class MenuInputHandler : MonoBehaviour
     private InputAction leftAction;
     private InputAction rightAction;
     private InputAction randomizeAction;
-
+    [SerializeField] private string player2ActionMapName;
     [SerializeField] private UnityEvent onUp;
     [SerializeField] private UnityEvent onDown;
     [SerializeField] private UnityEvent onLeft;
@@ -51,6 +51,12 @@ public class MenuInputHandler : MonoBehaviour
         leftAction.performed += OnLeft;
         rightAction.performed += OnRight;
         randomizeAction.performed += OnRandomize;
+    }
+
+    public void RebindToPlayer2()
+    {
+        input.SwitchCurrentActionMap(player2ActionMapName);
+        RebindForCurrentMap();
     }
 
     public void RebindForCurrentMap()

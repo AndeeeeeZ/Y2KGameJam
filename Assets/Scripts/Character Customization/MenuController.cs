@@ -1,10 +1,13 @@
 using UnityEngine;
 
+// Controls all the UI and their target
 public class MenuController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject[] options;
     [SerializeField] private Transform[] targetTransforms;
+    [SerializeField] private CustomizationUIController uiController;
+    [SerializeField] private MaterialSlotUIController[] materialControllers;
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 10f;
@@ -15,8 +18,8 @@ public class MenuController : MonoBehaviour
     [SerializeField] private float[] slotAlphas;
 
     [Header("Sound Effects")]
-    [SerializeField] private AudioClip audioClip; 
-    [SerializeField] private AudioSource leftAudioSource, rightAudioSource; 
+    [SerializeField] private AudioClip audioClip;
+    [SerializeField] private AudioSource leftAudioSource, rightAudioSource;
 
     private int index;
     private bool[] wasActive;
@@ -162,10 +165,10 @@ public class MenuController : MonoBehaviour
         else
         {
             // TODO: Play error sound?
-            return; 
+            return;
         }
 
-        leftAudioSource.PlayOneShot(audioClip); 
+        leftAudioSource.PlayOneShot(audioClip);
     }
 
     public void TriggerCurrentRight()
@@ -187,7 +190,7 @@ public class MenuController : MonoBehaviour
         {
             // TODO: Play error sound? 
         }
-        rightAudioSource.PlayOneShot(audioClip); 
+        rightAudioSource.PlayOneShot(audioClip);
     }
 
     private void WrapIndex()
@@ -216,6 +219,26 @@ public class MenuController : MonoBehaviour
                 int slotIndex = relativeIndex + 3;
                 ApplyInstant(i, slotIndex);
             }
+        }
+    }
+
+    public void SwitchAllToPlayer1()
+    {
+        uiController.ToPlayer1();
+        foreach (var m in materialControllers)
+        {
+            m.ToPlayer1();
+            m.Reset();
+        }
+    }
+
+    public void SwitchAllToPlayer2()
+    {
+        uiController.ToPlayer2();
+        foreach (var m in materialControllers)
+        {
+            m.ToPlayer2();
+            m.Reset();
         }
     }
 }
