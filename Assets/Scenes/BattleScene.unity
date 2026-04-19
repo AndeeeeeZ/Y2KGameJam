@@ -893,6 +893,11 @@ MonoBehaviour:
   - {fileID: 260203576}
   save: {fileID: 11400000, guid: c508ea5e1e6f7ae4ca633524dcde4652, type: 2}
   loadSavedOnStart: 0
+--- !u!95 &364320589 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 25ced9e348ca32d4c93cf428cc29c3fe, type: 3}
+  m_PrefabInstance: {fileID: 1797714013}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &376244171
 GameObject:
   m_ObjectHideFlags: 0
@@ -1840,8 +1845,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG: 0
-  attackWindow: 0.25
-  fakeAttackCoolDown: 0.5
+  attackWindow: 0.5
+  fakeAttackCoolDown: 2
+  animator: {fileID: 1760005364}
 --- !u!114 &525567540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3221,8 +3227,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG: 0
-  attackWindow: 0.25
-  fakeAttackCoolDown: 0.5
+  attackWindow: 0.5
+  fakeAttackCoolDown: 2
+  animator: {fileID: 364320589}
 --- !u!114 &1074465382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4922,7 +4929,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: c419f0ecf3038dd4bb94b7e90fe9c4a3, type: 2}
     - target: {fileID: 5866666021909216657, guid: 25ced9e348ca32d4c93cf428cc29c3fe, type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7188402756421853583, guid: 25ced9e348ca32d4c93cf428cc29c3fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5135,6 +5142,11 @@ MonoBehaviour:
   - {fileID: 1357569579}
   save: {fileID: 11400000, guid: b0d8635323f29824f848d20c929cb21b, type: 2}
   loadSavedOnStart: 0
+--- !u!95 &1760005364 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 25ced9e348ca32d4c93cf428cc29c3fe, type: 3}
+  m_PrefabInstance: {fileID: 1760005347}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1797714013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5461,7 +5473,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: c419f0ecf3038dd4bb94b7e90fe9c4a3, type: 2}
     - target: {fileID: 5866666021909216657, guid: 25ced9e348ca32d4c93cf428cc29c3fe, type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7188402756421853583, guid: 25ced9e348ca32d4c93cf428cc29c3fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -4,16 +4,19 @@ public class PlayerCombat : MonoBehaviour
 {
     [SerializeField] private bool DEBUG = false;
     [SerializeField] private float attackWindow, fakeAttackCoolDown;
+    [SerializeField] private Animator animator;
     private Player player;
     private MatchManager matchManager;
     private float attackTimer;
     private bool inAction; // Is doing an action or not
     private bool attacking; // Differentiate real and fake attack 
     private Direction attackDirection;
+    private string fakeAttackTrigger = "FakeAttack";
 
     private void Awake()
     {
         player = GetComponent<Player>();
+
         Reset();
     }
 
@@ -36,10 +39,10 @@ public class PlayerCombat : MonoBehaviour
 
             if (attacking)
             {
-                matchManager.ResolveAttack(player, attackDirection); 
+                matchManager.ResolveAttack(player, attackDirection);
             }
             attacking = false;
-            attackDirection = Direction.NONE; 
+            attackDirection = Direction.NONE;
         }
     }
 
@@ -56,7 +59,7 @@ public class PlayerCombat : MonoBehaviour
         }
 
         // TODO: Play attack animation
-        attackDirection = direction; 
+        attackDirection = direction;
         attacking = true;
         inAction = true;
         attackTimer = attackWindow;
@@ -77,6 +80,7 @@ public class PlayerCombat : MonoBehaviour
         // TODO: Play fake attack animation
         inAction = true;
         attackTimer = fakeAttackCoolDown;
+        animator.SetTrigger(fakeAttackTrigger);
     }
 
     private bool CanAttack()
