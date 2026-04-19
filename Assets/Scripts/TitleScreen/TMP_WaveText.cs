@@ -8,14 +8,18 @@ public class TMP_WaveText : MonoBehaviour
     public float waveSpacing = 0.3f; 
 
     public float colorSpeed = 2f;
+    public bool applyColor = true; 
+    public Color startNotHue; 
 
     private TMP_Text textMesh;
     private TMP_TextInfo textInfo;
     private Vector3[][] originalVertices;
+    private float saturation, value; 
 
     void Awake()
     {
         textMesh = GetComponent<TMP_Text>();
+        Color.RGBToHSV(startNotHue, out _, out saturation, out value); 
     }
 
     void Start()
@@ -58,7 +62,7 @@ public class TMP_WaveText : MonoBehaviour
 
             // Animated color using HSV
             float hue = Mathf.Repeat(Time.time * colorSpeed + i * 0.05f, 1f);
-            Color color = Color.HSVToRGB(hue, 1f, 1f);
+            Color color = Color.HSVToRGB(hue, saturation, value);
 
             for (int j = 0; j < 4; j++)
             {
@@ -67,7 +71,8 @@ public class TMP_WaveText : MonoBehaviour
                     originalVertices[meshIndex][vertexIndex + j] + offset;
 
                 // Apply animated color
-                colors[vertexIndex + j] = color;
+                if (applyColor)
+                    colors[vertexIndex + j] = color;
             }
         }
 
