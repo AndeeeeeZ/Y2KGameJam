@@ -105,10 +105,10 @@ public class MatchManager : MonoBehaviour
     }
 
 
-    public void ResolveAttack(Player attacker, Direction direction)
+    public bool ResolveAttack(Player attacker, Direction direction)
     {
-        if (attacker != currAttacker) return;
-        if (direction == Direction.NONE) return; 
+        if (attacker != currAttacker) return false;
+        if (direction == Direction.NONE) return false; 
 
         Player defender = currDefender;
         PlayerDefense defense = defender.GetComponent<PlayerDefense>();
@@ -120,10 +120,12 @@ public class MatchManager : MonoBehaviour
         {
             defender.GetComponent<PlayerHealth>().TakeHit();
             Debug.Log("HIT!!!"); 
+            return true; 
         }
         else
         {
-            Debug.Log("BLOCK!!!"); 
+            Debug.Log("BLOCK!!!");
+            return false;  
         }
     }
 }

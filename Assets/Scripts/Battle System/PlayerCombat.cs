@@ -12,6 +12,9 @@ public class PlayerCombat : MonoBehaviour
     private bool attacking; // Differentiate real and fake attack 
     private Direction attackDirection;
     private string fakeAttackTrigger = "FakeAttack";
+    private string preAttackTrigger = "PreAttack";
+    private string attackFailedTrigger = "AttackFailed"; 
+    private string attackSuccessTrigger = "AttackSuccess"; 
 
     private void Awake()
     {
@@ -39,7 +42,14 @@ public class PlayerCombat : MonoBehaviour
 
             if (attacking)
             {
-                matchManager.ResolveAttack(player, attackDirection);
+                if (matchManager.ResolveAttack(player, attackDirection))
+                {
+                    animator.SetTrigger(attackSuccessTrigger); 
+                }
+                else
+                {
+                    animator.SetTrigger(attackFailedTrigger); 
+                }
             }
             attacking = false;
             attackDirection = Direction.NONE;
@@ -58,11 +68,14 @@ public class PlayerCombat : MonoBehaviour
             return;
         }
 
-        // TODO: Play attack animation
+
         attackDirection = direction;
         attacking = true;
         inAction = true;
         attackTimer = attackWindow;
+
+        // TODO: change animation depending on attack direction
+        animator.SetTrigger(preAttackTrigger);
     }
 
     public void RequestFake()
