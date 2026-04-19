@@ -1744,10 +1744,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 142452362}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
+      - m_Target: {fileID: 1033665049}
+        m_TargetAssemblyTypeName: ModelSpinner, Assembly-CSharp
+        m_MethodName: set_enabled
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9686,7 +9686,31 @@ MonoBehaviour:
         m_CallState: 2
   OnSceneEnd:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 952195020}
+        m_TargetAssemblyTypeName: BodyPartsLoader, Assembly-CSharp
+        m_MethodName: SaveData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1932081186}
+        m_TargetAssemblyTypeName: BodyPartsLoader, Assembly-CSharp
+        m_MethodName: SaveData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   currentPlayer: 0
 --- !u!4 &593558628
 Transform:
@@ -10938,8 +10962,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _img: {fileID: 822571909}
-  _x: -0.1
-  _y: 0.2
+  _x: -0.12
+  _y: 0.18
 --- !u!114 &822571909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12171,7 +12195,7 @@ MonoBehaviour:
   - {fileID: 765177178}
   - {fileID: 690696904}
   - {fileID: 391603526}
-  save: {fileID: 0}
+  save: {fileID: 11400000, guid: b0d8635323f29824f848d20c929cb21b, type: 2}
   loadSavedOnStart: 0
 --- !u!95 &952195021
 Animator:
@@ -23494,7 +23518,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -89}
+  m_AnchoredPosition: {x: 0, y: -55}
   m_SizeDelta: {x: 800, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1747684487
@@ -23535,7 +23559,7 @@ MonoBehaviour:
   m_Texture: {fileID: 2800000, guid: 7f6408c6d49691d488a035f48a996974, type: 3}
   m_UVRect:
     serializedVersion: 2
-    x: 0
+    x: 0.2
     y: 0
     width: 1
     height: 1
@@ -25506,7 +25530,7 @@ MonoBehaviour:
   - {fileID: 147259599}
   - {fileID: 840210415}
   - {fileID: 668241961}
-  save: {fileID: 0}
+  save: {fileID: 11400000, guid: c508ea5e1e6f7ae4ca633524dcde4652, type: 2}
   loadSavedOnStart: 0
 --- !u!95 &1932081187
 Animator:
