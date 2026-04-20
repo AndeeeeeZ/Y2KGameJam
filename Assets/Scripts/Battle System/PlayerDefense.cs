@@ -4,6 +4,9 @@ public class PlayerDefense : MonoBehaviour
 {
     [SerializeField] private bool DEBUG = false;
     [SerializeField] private GameObject DEBUG_Left, DEBUG_Right;
+    [SerializeField] private Animator animator; 
+    private string animatorLeftBool = "isHoldingLeft"; 
+    private string animatorRightBool = "isHoldingRight"; 
     private PlayerEnergy energy;
 
     public bool isHoldLeft { get; private set; }
@@ -55,6 +58,8 @@ public class PlayerDefense : MonoBehaviour
             }
             isHoldRight = value;
         }
+        animator.SetBool(animatorLeftBool, isHoldLeft); 
+        animator.SetBool(animatorRightBool, isHoldRight); 
     }
 
     public void UpdateDefense()

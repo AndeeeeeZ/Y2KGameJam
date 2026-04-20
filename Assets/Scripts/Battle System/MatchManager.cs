@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class MatchManager : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class MatchManager : MonoBehaviour
     [SerializeField] private Player player1;
     [SerializeField] private Player player2;
     [SerializeField] private TextMeshProUGUI player1RoleText, player2RoleText;
+    [SerializeField] private Image[] player1Images, player2Images; 
+    [SerializeField] private Color attackerColor, defenderColor; 
 
     [Header("Match Stats")]
     [SerializeField] private float matchTime = 10f;
@@ -102,6 +105,18 @@ public class MatchManager : MonoBehaviour
 
         if (player2RoleText != null)
             player2RoleText.text = player2.currentRole.ToString();
+
+        Color p1Color = player1.currentRole == PlayerRole.ATTACKER ? attackerColor : defenderColor; 
+        Color p2Color = player2.currentRole == PlayerRole.ATTACKER ? attackerColor : defenderColor;
+
+        UpdateUIColor(player1Images, p1Color); 
+        UpdateUIColor(player2Images, p2Color);  
+    }
+
+    private void UpdateUIColor(Image[] targets, Color targetColor)
+    {
+        foreach(Image i in targets)
+            i.color = targetColor; 
     }
 
 

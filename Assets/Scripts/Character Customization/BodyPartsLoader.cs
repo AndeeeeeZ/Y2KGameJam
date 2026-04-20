@@ -55,6 +55,10 @@ public class BodyPartsLoader : MonoBehaviour
 
     private void ApplyMesh(MeshItemList list, int bodyPartIndex)
     {
+        if (bodyPartIndex > meshIndices.Length)
+        {
+            Debug.LogWarning($"Index out of bound for list {list.slot}");
+        }
         Mesh target = list.GetByIndex(meshIndices[bodyPartIndex]);
         bodyParts[bodyPartIndex].SetMesh(target);
     }

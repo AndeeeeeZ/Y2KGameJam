@@ -910,7 +910,7 @@ MonoBehaviour:
   - {fileID: 938248118}
   - {fileID: 150123266}
   save: {fileID: 11400000, guid: c508ea5e1e6f7ae4ca633524dcde4652, type: 2}
-  loadSavedOnStart: 0
+  loadSavedOnStart: 1
 --- !u!95 &364320589 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 25ced9e348ca32d4c93cf428cc29c3fe, type: 3}
@@ -1850,6 +1850,7 @@ MonoBehaviour:
   DEBUG: 0
   DEBUG_Left: {fileID: 1839246742}
   DEBUG_Right: {fileID: 452505033}
+  animator: {fileID: 1760005364}
 --- !u!114 &525567539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3286,6 +3287,7 @@ MonoBehaviour:
   DEBUG: 0
   DEBUG_Left: {fileID: 2066227052}
   DEBUG_Right: {fileID: 1097227689}
+  animator: {fileID: 364320589}
 --- !u!114 &1074465381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4265,7 +4267,7 @@ MonoBehaviour:
   player2: {fileID: 1074465383}
   player1RoleText: {fileID: 1675215921}
   player2RoleText: {fileID: 376244173}
-  matchTime: 10
+  matchTime: 30
   timerText: {fileID: 1988513725}
 --- !u!4 &1625117936
 Transform:
