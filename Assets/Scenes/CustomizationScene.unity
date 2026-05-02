@@ -22099,7 +22099,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 057c78dc7641d6346bf288cb0dac4894, type: 2}
     - target: {fileID: 5866666021909216657, guid: 25ced9e348ca32d4c93cf428cc29c3fe, type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7188402756421853583, guid: 25ced9e348ca32d4c93cf428cc29c3fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -23149,7 +23149,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 057c78dc7641d6346bf288cb0dac4894, type: 2}
     - target: {fileID: 5866666021909216657, guid: 25ced9e348ca32d4c93cf428cc29c3fe, type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7188402756421853583, guid: 25ced9e348ca32d4c93cf428cc29c3fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
